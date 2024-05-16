@@ -17,9 +17,17 @@ So given that we are making a choice, even if we are not aware of it, the goal o
 
 In my opinion, we have a pipeline that often looks like this:
 
-IDT => Shot Level Adjustments => Macro Look => | => Tone Mapping => Gamut Mapping => Display Transform
+```
+IDT => Shot Level Adjustments => Macro Look => || => Tone Mapping => Gamut Mapping => Display Transform
+```
 
 and it seemed to me that people have arbitrarally drawn a line and said everything on this side is a "look" while everything on the other side of that vertical line is the DRT. I don't agree, or rather I would say that it is not a useful way to divide things. I want to divide things into The Preferential and the Technical.
+
+I think that it should look like this...and in actuality it DOES Look like this even if we pretend it doesn't
+
+```
+IDT => Shot Level Adjustments => Macro Look  => Tone Mapping => Gamut Mapping => || => Display Transform
+```
 
 If you are making a choice, touching a slider, checking a box, that is probably preferential. After all, you didn't have to do that, you probably decided to check that box or touch that slider because it gave you an image you preferred. Baselight's TCAM system kind of embraces this. The DRT should be as minimal and do as little as possible, the image is not expected to look good with just the DRT. In order to get an aesthetically pleasing image, you should apply a look upstream. I want to embrace that mentality. Let's find out how this works.
 
@@ -57,7 +65,8 @@ Here are the "rules":
 
 I haven't done any yet. Stay tuned.
 
-DISCLAIMER:
-I am just learning a lot of this stuff. This is my idea based on logic and kind of what I see everyone talking about. I see a lot of people copying the same input and output transforms, just so they can add one special preferential thing to their DRT, and then people have to kind of take it or leave it, all or nothing.
+# DISCLAIMER:
+
+I am just learning a lot of this stuff. Its possible none of this works, and there are reasons why you have to keep everything in one node. This is my idea based on logic and kind of what I see everyone talking about. I see a lot of people copying the same input and output transforms, just so they can add one special preferential thing to their DRT, and then people have to kind of take it or leave it, all or nothing.
 
 Not everyone is able to program their own DRT's, and I think that is a shame, hopefully, by being able to assemble your own, you can get a little closer to taking full control over your image.

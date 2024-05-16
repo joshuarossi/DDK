@@ -1,0 +1,28 @@
+#line 2 "DDK_Tone_ACES_RRT.dctl"
+#include "../utilities.h"
+
+DEFINE_UI_PARAMS(gamut, gamut, DCTLUI_COMBO_BOX, 0, {rec709, dci_p3, rec2020}, {Rec709, DCI P3, Rec2020})
+__DEVICE__ float3 transform(int p_Width, int p_Height, int p_X, int p_Y, float p_R, float p_G, float p_B)
+{
+  float3 input = make_float3(p_R, p_G, p_B);
+  float3 min_gamut;
+  float3 max_gamut;
+  if (gamut == rec709)
+  {
+    float3 min_gamut = make_float3(0.0, 0.0, 0.0);
+    float3 max_gamut = make_float3(0.95047, 1.0, 1.08883);
+  }
+  else if (gamut == dci_p3)
+  {
+    float3 min_gamut = make_float3(0.0, 0.0, 0.0);
+    float3 max_gamut = make_float3(0.98071, 1.0, 1.0);
+  }
+  else if (gamut == rec2020)
+  {
+    float3 min_gamut = make_float3(0.0, 0.0, 0.0);
+    float3 max_gamut = make_float3(0.708, 1.0, 0.992);
+  }
+
+  float3 output = clip_to_gamut(input, min_gamut, max_gamut);
+  return output;
+}

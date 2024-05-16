@@ -30,6 +30,11 @@ __DEVICE__ float3 ACES_RRT(float3 v, float a, float b, float c, float d, float e
   }
 }
 
+__DEVICE__ float3 clip_to_gamut(float3 color, float3 min_gamut, float3 max_gamut)
+{
+  return clamp(color, min_gamut, max_gamut);
+}
+
 __DEVICE__ float3 drago(float3 value, float bias, float L_max)
 {
   // Extract the Y channel (luminance)
