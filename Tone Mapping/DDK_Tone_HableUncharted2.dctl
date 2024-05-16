@@ -1,0 +1,17 @@
+#line 2 "dynamic_range_compressor.dctl"
+#include "../utilities.h"
+
+DEFINE_UI_PARAMS(per_channel, Per Channel, DCTLUI_CHECK_BOX, 1)
+DEFINE_UI_PARAMS(a, A, DCTLUI_SLIDER_FLOAT, 0.55, 0.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(b, B, DCTLUI_SLIDER_FLOAT, 0.13, 0.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(c, C, DCTLUI_SLIDER_FLOAT, 0.29, 0.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(d, D, DCTLUI_SLIDER_FLOAT, 0.27, 0.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(e, E, DCTLUI_SLIDER_FLOAT, 0.02, 0.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(f, F, DCTLUI_SLIDER_FLOAT, 0.55, 0.0, 1.0, 0.01)
+
+__DEVICE__ float3 transform(int p_Width, int p_Height, int p_X, int p_Y, float p_R, float p_G, float p_B)
+{
+  float3 input = float3(p_R, p_G, p_B);
+  float3 output = hable(input, a, b, c, d, e, f, per_channel);
+  return output;
+}

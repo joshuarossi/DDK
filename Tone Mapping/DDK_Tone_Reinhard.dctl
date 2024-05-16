@@ -1,0 +1,38 @@
+#line 2 "dynamic_range_compressor.dctl"
+#include "../utilities.h"
+
+DEFINE_UI_PARAMS(input, Input, DCTLUI_COMBO_BOX, 0, {none, y_channel, average, independent, threshold, max}, {None, Y Channel, Average, Independent, Threshold, Max})
+
+__DEVICE__ float3 transform(int p_Width, int p_Height, int p_X, int p_Y, float p_R, float p_G, float p_B)
+{
+  float3 color = make_float3(p_R, p_G, p_B);
+  if (input == none)
+  {
+    float3 result = reinhard(color, 0);
+    return result;
+  }
+  else if (input == y_channel)
+  {
+    float3 result = reinhard(color, 1);
+    return result;
+  }
+  else if (input == average)
+  {
+    float3 result = reinhard(color, 2);
+    return result;
+  }
+  else if (input == independent)
+  {
+    float3 result = reinhard(color, 3);
+    return result;
+  }
+  else if (input == threshold)
+  {
+    float3 result = reinhard(color, 4);
+  }
+  else if (input == max)
+  {
+    float3 result = reinhard(color, 5);
+    return result;
+  }
+}

@@ -1,0 +1,11 @@
+#line 2 "DDK_Tone_Drago.dctl"
+#include "../utilities.h"
+
+DEFINE_UI_PARAMS(peak_luminance, Peak, DCTLUI_SLIDER_FLOAT, 0.5, 0.0, 10.0, 0.001)
+DEFINE_UI_PARAMS(bias, Bias, DCTLUI_SLIDER_FLOAT, 0.10, 0.0, 10.0, 0.01)
+__DEVICE__ float3 transform(int p_Width, int p_Height, int p_X, int p_Y, float p_R, float p_G, float p_B)
+{
+  float3 input = make_float3(p_R, p_G, p_B);
+  float3 output = drago(input, bias, peak_luminance);
+  return output;
+}

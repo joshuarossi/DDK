@@ -1,0 +1,18 @@
+#line 2 "DDK_Tone_ACES_RRT.dctl"
+#include "../utilities.h"
+
+DEFINE_UI_PARAMS(per_channel, Per Channel, DCTLUI_CHECK_BOX, 1)
+DEFINE_UI_PARAMS(a, A, DCTLUI_SLIDER_FLOAT, 0.366, 0.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(b, B, DCTLUI_SLIDER_FLOAT, 0.975, 0.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(c, C, DCTLUI_SLIDER_FLOAT, 0.246, 0.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(d, D, DCTLUI_SLIDER_FLOAT, 0.0, 0.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(e, E, DCTLUI_SLIDER_FLOAT, 0.0, 0.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(f, F, DCTLUI_SLIDER_FLOAT, 0.0, 0.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(g, G, DCTLUI_SLIDER_FLOAT, 0.0, 0.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(h, H, DCTLUI_SLIDER_FLOAT, 0.678, 0.0, 1.0, 0.01)
+__DEVICE__ float3 transform(int p_Width, int p_Height, int p_X, int p_Y, float p_R, float p_G, float p_B)
+{
+  float3 input = make_float3(p_R, p_G, p_B);
+  float3 output = ACES_RRT(input, a, b, c, d, e, f, g, h, per_channel);
+  return output;
+}

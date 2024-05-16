@@ -1,0 +1,26 @@
+{
+  "files.associations": {
+    "*.wpml": "xml",
+    "*.dctl": "c",
+    "__bit_reference": "c",
+    "bitset": "c",
+    "deque": "c",
+    "__memory": "c",
+    "limits": "c",
+    "ratio": "c",
+    "tuple": "c",
+    "vector": "c",
+    "istream": "c",
+    "ostream": "c",
+    "array": "c",
+    "functional": "c",
+    "type_traits": "c",
+    "utility": "c",
+    "variant": "c",
+    "semaphore": "c",
+    "algorithm": "c",
+    "chrono": "c",
+    "random": "c",
+    "cmath": "c"
+  }
+}
