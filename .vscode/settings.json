@@ -21,6 +21,7 @@
     "algorithm": "c",
     "chrono": "c",
     "random": "c",
-    "cmath": "c"
+    "cmath": "c",
+    "utilities.h": "c"
   }
 }
