@@ -33,6 +33,8 @@ If you are making a choice, touching a slider, checking a box, that is probably 
 
 ## How to use this
 
+![Node Tree](NodeTree.png)
+
 Given that we want to be able to exercise control over all the preferential portions of the pipeline, this system or framework allows you to add as many nodes as you would like before the CST. Your mission, if you choose to accept it, is to find the right combination of tone mapping operators and gamut mapping operators to give you the image you want. Once you find a combination that works for you, that matches your sensibilities, you can just continue to use it, or feel free to tweak it in the future.
 
 Here are the "rules":
